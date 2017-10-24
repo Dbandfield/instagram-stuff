@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 var querystring = require('querystring');
-var http = require('http');
+var https = require('https');
 
 port = process.env.PORT || 3000
 
@@ -26,7 +26,7 @@ function PostCode(codestring)
 
   // An object of options to indicate where to post to
   var post_options = {
-      host: 'https://api.instagram.com',
+      host: 'api.instagram.com',
       port: '80',
       path: '/oauth/access_token',
       method: 'POST',
@@ -37,7 +37,7 @@ function PostCode(codestring)
   };
 
   // Set up the request
-  var post_req = http.request(post_options, function(res) {
+  var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
