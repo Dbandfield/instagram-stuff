@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+port = process.env.PORT || 3000)
+
 app.get('/', function (req, res)
 {
   res.sendFile(__dirname + '/index.html',function(err)
@@ -25,7 +27,7 @@ app.get('/redirect', function (req, res)
 });
 });
 
-app.listen(3000, function ()
+app.listen(port, function ()
 {
   console.log('Example app listening on port 3000!');
 });
