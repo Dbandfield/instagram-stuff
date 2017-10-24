@@ -62,9 +62,9 @@ app.get('/', function (req, res)
 });
 });
 
-app.get('/redirect?code=:code', function (req, res)
+app.get('/redirect', function (req, res)
 {
-  code = req.params["code"]
+  code = req.query.code
   PostCode(code)
   res.sendFile(__dirname + '/again.html',function(err)
 {
