@@ -55,7 +55,7 @@ function PostCode(codestring)
 
   // An object of options to indicate where to post to
   var post_options = {
-      host: 'https:// api.instagram.com',
+      host: 'https://api.instagram.com',
       path: '/oauth/access_token',
       method: 'POST',
       headers: {
