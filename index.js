@@ -15,8 +15,8 @@ var REDIRECT_URI = "https://aether-image.herokuapp.com/redirect"
 
 function requestMedia()
 {
-  var getStr = 'https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=' + accessToken;
-
+  var getStr = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + accessToken;
+  console.log(getStr);
   https.get(getStr, (resp) =>
   {
       let data = '';
