@@ -43,6 +43,7 @@ function requestMedia()
         {
           mediaObject = JSON.parse(data).data[0]
           likes = mediaObject.likes.count
+          imURL = mediaObject.link
           console.log(mediaObject.likes.count)
 
         }
