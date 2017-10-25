@@ -13,6 +13,8 @@ var CLIENT_ID = "a2f2482c753d4f059795ff4e8d58d37c"
 var CLIENT_SECRET = "04a2f126e1e6422f97046497d6d879d3"
 var REDIRECT_URI = "https://aether-image.herokuapp.com/redirect"
 
+var mediaObject = null;
+
 function requestMedia()
 {
   var getStr = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + accessToken;
@@ -31,6 +33,8 @@ function requestMedia()
       resp.on('end', () =>
       {
         console.log(JSON.parse(data));
+        mediaObject = JSON.parse(data).data[0]
+        console.log(mediaObject.likes)
       });
 
   }).on("error", (err) => {
