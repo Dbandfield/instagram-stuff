@@ -33,8 +33,12 @@ function requestMedia()
       resp.on('end', () =>
       {
         console.log(JSON.parse(data));
-        mediaObject = JSON.parse(data).data[0]
-        console.log(mediaObject.likes.count)
+        var arr = JSON.parse(data).data
+        if(arr.length > 0)
+        {
+          mediaObject = JSON.parse(data).data[0]
+          console.log(mediaObject.likes.count)
+        }
       });
 
   }).on("error", (err) => {
