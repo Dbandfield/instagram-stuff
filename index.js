@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 var querystring = require('querystring');
 var https = require('https');
+var WebSocket = require('ws')
 
 app.set('views', './views')
 app.set('view engine', 'pug')
