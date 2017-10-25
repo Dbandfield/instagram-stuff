@@ -18,7 +18,7 @@ var REDIRECT_URI = "https://aether-image.herokuapp.com/"
 
 var mediaObject = null;
 var likes = 0;
-var imURL = "":
+var imURL = "";
 
 function requestMedia()
 {
