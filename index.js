@@ -11,7 +11,7 @@ var responseJSON;
 
 var CLIENT_ID = "a2f2482c753d4f059795ff4e8d58d37c"
 var CLIENT_SECRET = "04a2f126e1e6422f97046497d6d879d3"
-var REDIRECT_URI = "https://aether-image.herokuapp.com/redirect"
+var REDIRECT_URI = "https://aether-image.herokuapp.com/"
 
 var mediaObject = null;
 
@@ -34,7 +34,7 @@ function requestMedia()
       {
         console.log(JSON.parse(data));
         mediaObject = JSON.parse(data).data[0]
-        console.log(mediaObject.likes)
+        console.log(mediaObject.likes.count)
       });
 
   }).on("error", (err) => {
@@ -86,30 +86,22 @@ function PostCode(codestring)
 
 }
 
-app.get('/', function (req, res)
+app.get('/*', function (req, res)
 {
-  res.sendFile(__dirname + '/index.html',function(err)
-{
-  if(err)
+  if(req.query.hasOwnProperty("code"))
   {
-    console.log(err);
-    req.status(err.status).end();
+    code = req.query.code
+    PostCode(code)
   }
-});
-});
 
-app.get('/redirect', function (req, res)
-{
-  code = req.query.code
-  PostCode(code)
-  res.sendFile(__dirname + '/again.html',function(err)
-{
-  if(err)
+  res.sendFile(__dirname + '/index.html',function(err)
   {
-    console.log(err);
-    req.status(err.status).end();
-  }
-});
+    if(err)
+    {
+      console.log(err);
+      req.status(err.status).end();
+    }
+  });
 });
 
 app.listen(port, function ()
