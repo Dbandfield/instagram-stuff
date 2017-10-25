@@ -104,7 +104,22 @@ function PostCode(codestring)
 
 }
 
-app.get('/*', function (req, res)
+app.get('/scripts/*', function(req, res)
+{
+  res.sendFile(__dirname + req.path, function (err)
+{
+  if (err)
+  {
+    console.log(err);
+    res.status(err.status).end();
+  }
+  else
+  {
+  }
+});
+})
+
+app.get('/', function (req, res)
 {
   if(req.query.hasOwnProperty("code"))
   {
