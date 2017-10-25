@@ -3,6 +3,9 @@ const app = express()
 var querystring = require('querystring');
 var https = require('https');
 
+app.set('views', './views')
+app.set('view engine', 'pug')
+
 port = process.env.PORT || 3000
 
 var code = 0;
@@ -97,15 +100,16 @@ app.get('/*', function (req, res)
     code = req.query.code
     PostCode(code)
   }
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
 
-  res.sendFile(__dirname + '/index.html',function(err)
-  {
-    if(err)
-    {
-      console.log(err);
-      req.status(err.status).end();
-    }
-  });
+  // res.sendFile(__dirname + '/index.html',function(err)
+  // {
+  //   if(err)
+  //   {
+  //     console.log(err);
+  //     req.status(err.status).end();
+  //   }
+  // });
 });
 
 app.listen(port, function ()
