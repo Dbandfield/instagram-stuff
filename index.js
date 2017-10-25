@@ -37,16 +37,21 @@ function requestMedia()
       // The whole response has been received. Print out the result.
       resp.on('end', () =>
       {
-        console.log(JSON.parse(data));
-        var arr = JSON.parse(data).data
-        if(arr.length > 0)
+        var recv = JSON.parse(data)
+        if(recv.meta.code == 200)
         {
-          mediaObject = JSON.parse(data).data[0]
-          likes = mediaObject.likes.count
-          imURL = mediaObject.link
-          console.log(mediaObject.likes.count)
+            console.log(recv);
+            var arr = recv.data
+            if(arr.length > 0)
+            {
+              mediaObject = JSON.parse(data).data[0]
+              likes = mediaObject.likes.count
+              imURL = mediaObject.link
+              console.log(mediaObject.likes.count)
 
+            }
         }
+
       });
 
   }).on("error", (err) => {
