@@ -1,8 +1,12 @@
 html
   head
     title= title
+    script(src='/scripts/jquery.js')
+    script(src='/scripts/main.js')
   body
     h1= message
     a(class='button', href='https://api.instagram.com/oauth/authorize/?client_id=a2f2482c753d4f059795ff4e8d58d37c&redirect_uri=https://aether-image.herokuapp.com/&response_type=code') Refresh
     |
-    iframe(src=ln)
+    |
+    |
+    a(src=ln) Link to image . . .

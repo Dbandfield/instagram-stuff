@@ -49,6 +49,8 @@ function requestMedia()
               imURL = mediaObject.link
               console.log(mediaObject.likes.count)
 
+              res.render('index', { title: 'THE NUMBER IS LIKES', message: likes, ln: imURL })
+
             }
         }
 
