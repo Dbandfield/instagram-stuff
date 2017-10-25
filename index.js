@@ -49,8 +49,13 @@ ws.onopen = function()
 
 ws.onmessage = function(data, mask)
 {
-
-  console.log(data);
+  var substr = data.data.substring(0, 5);
+      if(substr == "_ping")
+      {
+    console.log("Received Ping");
+          ws.send(data.data);
+      }
+  console.log(data.data);
 };
 
 function requestMedia()
