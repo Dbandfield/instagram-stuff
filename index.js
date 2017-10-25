@@ -17,6 +17,7 @@ var CLIENT_SECRET = "04a2f126e1e6422f97046497d6d879d3"
 var REDIRECT_URI = "https://aether-image.herokuapp.com/"
 
 var mediaObject = null;
+var likes = 0;
 
 function requestMedia()
 {
@@ -40,7 +41,9 @@ function requestMedia()
         if(arr.length > 0)
         {
           mediaObject = JSON.parse(data).data[0]
+          likes = mediaObject.likes.count
           console.log(mediaObject.likes.count)
+
         }
       });
 
@@ -100,7 +103,7 @@ app.get('/*', function (req, res)
     code = req.query.code
     PostCode(code)
   }
-  res.render('index', { title: 'Hey', message: 'Hello there!' })
+  res.render('index', { title: 'Hey', message: likes })
 
   // res.sendFile(__dirname + '/index.html',function(err)
   // {
