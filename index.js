@@ -18,6 +18,7 @@ var REDIRECT_URI = "https://aether-image.herokuapp.com/"
 
 var mediaObject = null;
 var likes = 0;
+var imURL = "":
 
 function requestMedia()
 {
@@ -103,16 +104,8 @@ app.get('/*', function (req, res)
     code = req.query.code
     PostCode(code)
   }
-  res.render('index', { title: 'Hey', message: likes })
+  res.render('index', { title: 'THE NUMBER IS LIKES', message: likes, ln: imURL })
 
-  // res.sendFile(__dirname + '/index.html',function(err)
-  // {
-  //   if(err)
-  //   {
-  //     console.log(err);
-  //     req.status(err.status).end();
-  //   }
-  // });
 });
 
 app.listen(port, function ()
