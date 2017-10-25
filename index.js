@@ -20,6 +20,38 @@ var mediaObject = null;
 var likes = 0;
 var imURL = "";
 
+var url = 'wss://aether-iot.herokuapp.com/';
+var ws = new WebSocket(url);
+var clientConfig =
+
+{
+  messageType     : "config",
+  messageContent  :
+  {
+    device      : "nodeMCU",
+    name        : "insta",
+    mode        : "send",
+    dataType    : "number"
+  }
+};
+/* When connection is established */
+ws.onopen = function()
+{
+
+  console.log('Connected to ' + url);
+  /* Convert client config details to JSON and then
+   * send */
+  var clientConfigMsg = JSON.stringify(clientConfig);
+  ws.send(clientConfigMsg)
+
+};
+
+ws.onmessage = function(data, mask)
+{
+
+  console.log(data);
+};
+
 function requestMedia()
 {
   var getStr = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + accessToken;
@@ -48,6 +80,7 @@ function requestMedia()
               likes = mediaObject.likes.count
               imURL = mediaObject.link
               console.log(mediaObject.likes.count)
+              ws.send(likes)
 
 
             }
