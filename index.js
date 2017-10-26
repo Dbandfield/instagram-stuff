@@ -182,4 +182,4 @@ function loop()
   if(readyToRequest) requestMedia();
 }
 
-setInterval(loop, 2000);
+setInterval(loop, 10000);
