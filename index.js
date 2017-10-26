@@ -9,6 +9,8 @@ app.set('view engine', 'pug')
 
 port = process.env.PORT || 3000
 
+var readyToRequest = false;
+
 var code = 0;
 var accessToken;
 var responseJSON;
@@ -133,7 +135,8 @@ function PostCode(codestring)
           console.log('Response: ' + chunk);
           responseJSON = JSON.parse(chunk);
           accessToken = responseJSON.access_token;
-          requestMedia();
+          //requestMedia();
+          readyToRequest = true;
       });
   });
 
@@ -173,3 +176,10 @@ app.listen(port, function ()
 {
   console.log('Example app listening on port 3000!');
 });
+
+function loop()
+{
+  if(readyToRequest) requestMedia();
+}
+
+setTimeout(loop, 2000);
