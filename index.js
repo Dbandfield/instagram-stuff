@@ -15,8 +15,8 @@ var code = 0;
 var accessToken;
 var responseJSON;
 
-var CLIENT_ID = "a2f2482c753d4f059795ff4e8d58d37c"
-var CLIENT_SECRET = "04a2f126e1e6422f97046497d6d879d3"
+var CLIENT_ID = "REDACTED" // substitute appropriately
+var CLIENT_SECRET = "REDACTED" // substitute appropriately
 var REDIRECT_URI = "https://aether-image.herokuapp.com/"
 
 var mediaObject = null;
